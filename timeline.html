@@ -1,225 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Tech Timeline 2025</title>
-    <style>
-        /* Font Setup */
-        @font-face {
-            font-family: 'Avenir Next';
-            src: url('https://fonts.cdnfonts.com/s/15011/AvenirNextLTPro-Regular.woff2') format('woff2'),
-                 url('https://fonts.cdnfonts.com/s/15011/AvenirNextLTPro-Regular.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon Timeline</title>
 
-        /* General Reset */
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Avenir Next', sans-serif;
-            background-color: #1E1E1E; /* Dark Background */
-            color: #FFFFFF;
-        }
+  <!-- Include Font Awesome CDN for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
-        h1 {
-            text-align: center;
-            color: #FFFFFF;
-            font-size: 36px;
-            margin-top: 50px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-weight: bold;
-            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
-        }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Avenir+Next:wght@200;300;400&display=swap');
 
-        /* Timeline Container */
-        .timeline-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 50px 20px;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Avenir Next', sans-serif;
+      background-color: #1f1f1f;
+      color: white;
+    }
 
-        /* Timeline Styling */
-        .timeline {
-            position: relative;
-            padding-left: 50px;
-            margin-top: 50px;
-        }
+    .design-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 100px 0;
+      text-align: center;
+      overflow-x: hidden;
+    }
 
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 20px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background-color: #7DA8FF; /* Light Blue */
-        }
+    h1 {
+      color: #FFFFFF;
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+    }
 
-        /* Timeline Events */
-        .timeline-event {
-            display: flex;
-            align-items: center;
-            margin: 60px 0;
-            opacity: 0;
-            transform: translateX(-100px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
+    /* Timeline Container */
+    .timeline {
+      width: 80%;
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
 
-        .timeline-event.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
+    /* Middle Vertical Line */
+    .timeline-middle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      background-image: linear-gradient(45deg, #7DA8FF, #0260A0); /* Light blue to Tech blue gradient */
+      width: 3px;
+      z-index: 1;
+    }
 
-        .timeline-event .date {
-            position: absolute;
-            left: -25px;
-            background-color: #E70010; /* Bold Red */
-            color: white;
-            padding: 20px;
-            border-radius: 50%;
-            font-weight: bold;
-            font-size: 26px;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0px 5px 15px rgba(255, 0, 0, 0.4);
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            border: 2px solid #FFFFFF;
-        }
+    /* Timeline Circle & Icons */
+    .timeline-circle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      font-size: 25px;
+      color: #7DA8FF; /* Tech Blue */
+      transform: translateX(-50%);
+      transition: all 0.3s ease;
+    }
 
-        .timeline-event .date:hover {
-            background-color: #B00308; /* Darker Red on hover */
-            transform: translateY(-5px);
-        }
+    .timeline-circle:hover {
+      transform: translateX(-50%) scale(1.2); /* Hover effect */
+      color: #E70010; /* Red Glow effect */
+    }
 
-        /* Event Content */
-        .timeline-event .content {
-            background-color: #0260A0; /* Tech Blue */
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0px 10px 30px rgba(0, 100, 160, 0.4);
-            width: 100%;
-            margin-left: 20px;
-            position: relative;
-            z-index: 1;
-            border-left: 8px solid #7DA8FF; /* Light Blue Border */
-            transition: background-color 0.4s ease, transform 0.3s ease;
-        }
+    .timeline-events {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
 
-        .timeline-event .content h3 {
-            font-size: 28px;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+    .timeline-events li {
+      position: relative;
+      padding-left: 40px;
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateX(-100px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
 
-        .timeline-event .content p {
-            font-size: 18px;
-            line-height: 1.5;
-        }
+    .timeline-events li.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
 
-        /* Hover Effects */
-        .timeline-event:hover .content {
-            background-color: #006FB7; /* Royal Blue on hover */
-            box-shadow: 0px 20px 40px rgba(0, 111, 183, 0.4);
-            transform: scale(1.05);
-        }
+    .timeline-events li h2 {
+      color: #B00308;
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
 
-        /* Scroll Animation (trigger on scroll) */
-        .timeline-event:nth-child(odd) {
-            transition-delay: 0.4s;
-        }
+    .timeline-events li h3 {
+      color: #0260A0;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
 
-        .timeline-event:nth-child(even) {
-            transition-delay: 0.6s;
-        }
+    .timeline-events li h4 {
+      color: #FFFFFF;
+      font-size: 1rem;
+      font-weight: 300;
+    }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .timeline-container {
-                padding: 30px 20px;
-            }
+    /* Hover effect for the events */
+    .timeline-events li:hover {
+      background-color: rgba(200, 0, 0, 0.2);
+      color: #FFFFFF;
+      transform: translateX(10px);
+    }
 
-            .timeline-event .content {
-                padding: 15px;
-            }
+    .timeline-events li h4 {
+      transition: color 0.3s ease;
+    }
 
-            .timeline-event .date {
-                font-size: 20px;
-                width: 50px;
-                height: 50px;
-            }
+    .timeline-events li:hover h4 {
+      color: #E70010;
+    }
 
-            h1 {
-                font-size: 28px;
-            }
-        }
+    /* Timeline Content Style */
+    .timeline-content {
+      padding: 1.75rem;
+      background: #1f1f1f;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+      border-radius: 6px;
+      margin: 1rem 0;
+      cursor: pointer;
+    }
 
-    </style>
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(231, 0, 16, 0.3);
+      background: #2c2c2c;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-middle {
+        display: none;
+      }
+
+      .timeline-circle {
+        width: 15px;
+        height: 15px;
+      }
+
+      .timeline-content {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Interactive Tech Timeline 2025</h1>
+  <div class="design-section">
+    <h1>Hackathon Timeline</h1>
+    <div class="timeline">
+      <div class="timeline-middle"></div>
+      
+      <div class="timeline-events">
+        <!-- Event 1 - May -->
+        <li class="timeline-event-years-6-5 timeline-event-legend">
+          <span>
+            <i class="fas fa-bullhorn timeline-circle"></i> <!-- Megaphone icon for announcement -->
+            <h2>May</h2>
+            <h3>Launch of Hackathon Idea</h3>
+            <h4>In-person at Osaka, via media</h4>
+          </span>
+          <i></i>
+        </li>
 
-    <div class="timeline-container">
-        <div class="timeline">
-            <div class="timeline-event">
-                <div class="date">May</div>
-                <div class="content">
-                    <h3>Announcement & Launch of Hackathon</h3>
-                    <p>In person at Osaka and via media, networks.</p>
-                </div>
-            </div>
-            <div class="timeline-event">
-                <div class="date">July</div>
-                <div class="content">
-                    <h3>Online Workshop 1</h3>
-                    <p>What are Human Rights and how do they relate to the Sendai Framework?</p>
-                </div>
-            </div>
-            <div class="timeline-event">
-                <div class="date">August</div>
-                <div class="content">
-                    <h3>Online Workshop 3</h3>
-                    <p>Building on tech stacks and platforms, using data sets, the cloud, and open source.</p>
-                </div>
-            </div>
-            <div class="timeline-event">
-                <div class="date">September</div>
-                <div class="content">
-                    <h3>3-Day Hackathon</h3>
-                    <p>Starting on 1 September, Japan’s Disaster Prevention Day.</p>
-                </div>
-            </div>
-            <div class="timeline-event">
-                <div class="date">October</div>
-                <div class="content">
-                    <h3>Announcement of Winners</h3>
-                    <p>Showcase of the winners at the Expo.</p>
-                </div>
-            </div>
-        </div>
+        <!-- Event 2 - July -->
+        <li class="timeline-event-years-2">
+          <i class="fas fa-laptop-code timeline-circle"></i> <!-- Laptop icon for workshops -->
+          <h2>July</h2>
+          <h3>Online Workshop 1: What are Human Rights?</h3>
+          <h4>Related to Sendai Framework</h4>
+        </li>
+        <li class="timeline-event-years-2">
+          <i class="fas fa-robot timeline-circle"></i> <!-- AI icon for AI workshop -->
+          <h2>July</h2>
+          <h3>Online Workshop 2: AI in Disaster Conditions</h3>
+          <h4>Registration Deadline (14 July 2025)</h4>
+        </li>
+
+        <!-- Event 3 - August -->
+        <li class="timeline-event-years-3">
+          <i class="fas fa-cloud timeline-circle"></i> <!-- Cloud icon for tech stack workshop -->
+          <h2>August</h2>
+          <h3>Online Workshop 3: Tech Stacks & Platforms</h3>
+          <h4>Using data sets, cloud, and open source</h4>
+        </li>
+
+        <!-- Event 4 - September -->
+        <li class="timeline-event-years-6">
+          <i class="fas fa-trophy timeline-circle"></i> <!-- Trophy icon for Hackathon -->
+          <h2>September</h2>
+          <h3>3-day Hackathon: Japan’s Disaster Prevention Day</h3>
+          <h4>Showcase at World Expo</h4>
+        </li>
+
+        <!-- Event 5 - October -->
+        <li class="timeline-event-years-2">
+          <i class="fas fa-certificate timeline-circle"></i> <!-- Certificate icon for winners -->
+          <h2>October</h2>
+          <h3>Announcement of Winner(s) & Showcase</h3>
+          <h4>At Expo, International Day for Disaster Reduction (13 October)</h4>
+        </li>
+
+        <!-- Event 6 - November -->
+        <li class="timeline-event-years-3">
+          <i class="fas fa-video timeline-circle"></i> <!-- Video icon for webinar -->
+          <h2>November</h2>
+          <h3>Webinar: Showcase of Winners</h3>
+          <h4>Winning tools in technology and human rights communities</h4>
+        </li>
+      </div>
     </div>
+  </div>
 
-    <script>
-        // Scroll-triggered animations
-        window.addEventListener('scroll', function() {
-            const events = document.querySelectorAll('.timeline-event');
-            events.forEach(event => {
-                const eventTop = event.getBoundingClientRect().top;
-                if (eventTop < window.innerHeight - 100) {
-                    event.classList.add('visible');
-                }
-            });
-        });
-    </script>
+  <script>
+    // Add 'visible' class to each event on scroll
+    const events = document.querySelectorAll('.timeline-events li');
+    window.addEventListener('scroll', () => {
+      events.forEach(event => {
+        const rect = event.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          event.classList.add('visible');
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>
