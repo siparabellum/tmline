@@ -2,148 +2,96 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Timeline Road - 6 Steps</title>
+  <title>Neon Timeline with Avenir Next</title>
   <style>
+    @font-face {
+      font-family: 'Avenir Next';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Avenir Next'), local('AvenirNext-Regular');
+    }
+
     body {
       margin: 0;
-      background: #111;
-      font-family: Arial, sans-serif;
+      background: linear-gradient(#1a1a1a, #000);
+      font-family: 'Avenir Next', sans-serif;
       color: white;
+      padding: 50px 0;
     }
 
-    .timeline-container {
-      position: relative;
-      width: 100%;
+    .timeline {
+      width: 90%;
       max-width: 1200px;
-      margin: 100px auto;
-      padding: 20px;
-    }
-
-    .road {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 10px;
-      background: linear-gradient(to right, transparent 0%, #ccc 50%, transparent 100%);
-      border-top: 3px dashed #777;
-      z-index: 0;
-    }
-
-    .step {
-      position: relative;
-      width: 16%;
-      display: inline-block;
-      vertical-align: top;
-      text-align: center;
-      z-index: 1;
-    }
-
-    .circle {
-      width: 100px;
-      height: 100px;
-      margin: 0 auto 10px;
-      border-radius: 50%;
-      background: #222;
-      box-shadow: 0 0 15px red;
+      margin: auto;
       display: flex;
-      align-items: center;
-      justify-content: center;
       flex-direction: column;
+      gap: 80px;
     }
 
-    .step:nth-child(2) .circle { box-shadow: 0 0 15px blue; }
-    .step:nth-child(3) .circle { box-shadow: 0 0 15px green; }
-    .step:nth-child(4) .circle { box-shadow: 0 0 15px purple; }
-    .step:nth-child(5) .circle { box-shadow: 0 0 15px gold; }
-    .step:nth-child(6) .circle { box-shadow: 0 0 15px cyan; }
-
-    .circle h3 {
-      margin: 0;
-      font-size: 18px;
+    .timeline-item {
+      width: 300px;
+      padding: 20px 25px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid;
+      box-shadow: 0 0 20px;
+      clip-path: polygon(0 0, 80% 0, 100% 20%, 100% 100%, 20% 100%, 0 80%);
     }
 
-    .circle p {
-      font-size: 12px;
-      padding: 5px;
+    .timeline-item.left { align-self: flex-start; }
+    .timeline-item.right { align-self: flex-end; }
+
+    .timeline-item h2 {
+      margin-top: 0;
+      font-size: 20px;
+      font-weight: 700;
     }
 
-    .step:nth-child(odd) {
-      margin-top: -80px;
+    .timeline-item p {
+      font-size: 14px;
+      line-height: 1.5;
     }
 
-    .step:nth-child(even) {
-      margin-top: 80px;
-    }
-
-    .wave {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 150px;
-      background: url('https://www.transparenttextures.com/patterns/diagmonds.png');
-      z-index: -1;
-    }
+    /* Neon color classes */
+    .year-2016 { border-color: #ff005d; box-shadow: 0 0 20px #ff005d; }
+    .year-2017 { border-color: #ff33cc; box-shadow: 0 0 20px #ff33cc; }
+    .year-2018 { border-color: #00ccff; box-shadow: 0 0 20px #00ccff; }
+    .year-2019 { border-color: #00ff66; box-shadow: 0 0 20px #00ff66; }
+    .year-2020 { border-color: #ffcc00; box-shadow: 0 0 20px #ffcc00; }
 
     @media screen and (max-width: 768px) {
-      .step {
-        display: block;
-        width: 100%;
-        margin-top: 40px !important;
-      }
-      .road {
-        display: none;
+      .timeline-item {
+        align-self: center !important;
+        width: 90%;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="timeline-container">
-    <div class="road"></div>
-
-    <div class="step">
-      <div class="circle">
-        <h3>01 LOREM</h3>
-        <p>Sample description text for step one.</p>
-      </div>
+  <div class="timeline">
+    <div class="timeline-item left year-2016">
+      <h2>2016 TITLE HERE</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
     </div>
 
-    <div class="step">
-      <div class="circle">
-        <h3>02 MAGNA</h3>
-        <p>Sample description text for step two.</p>
-      </div>
+    <div class="timeline-item right year-2017">
+      <h2>2017 TITLE HERE</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
     </div>
 
-    <div class="step">
-      <div class="circle">
-        <h3>03 AMET</h3>
-        <p>Sample description text for step three.</p>
-      </div>
+    <div class="timeline-item left year-2018">
+      <h2>2018 TITLE HERE</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
     </div>
 
-    <div class="step">
-      <div class="circle">
-        <h3>04 NULLA</h3>
-        <p>Sample description text for step four.</p>
-      </div>
+    <div class="timeline-item right year-2019">
+      <h2>2019 TITLE HERE</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
     </div>
 
-    <div class="step">
-      <div class="circle">
-        <h3>05 INISL</h3>
-        <p>Sample description text for step five.</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="circle">
-        <h3>06 EXERCI</h3>
-        <p>Sample description text for step six.</p>
-      </div>
+    <div class="timeline-item left year-2020">
+      <h2>2020 TITLE HERE</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
     </div>
   </div>
 
