@@ -5,24 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Tech Timeline 2025</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #7DA8FF, #B00308); /* Blue to Red Gradient */
-            color: #FFFFFF;
+        /* Font Setup */
+        @font-face {
+            font-family: 'Avenir Next';
+            src: url('https://fonts.cdnfonts.com/s/15011/AvenirNextLTPro-Regular.woff2') format('woff2'),
+                 url('https://fonts.cdnfonts.com/s/15011/AvenirNextLTPro-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* General Reset */
+        body, html {
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
-            height: 100vh;
-            transition: background 1s ease;
+            font-family: 'Avenir Next', sans-serif;
+            background-color: #1E1E1E; /* Dark Background */
+            color: #FFFFFF;
         }
 
         h1 {
             text-align: center;
-            margin: 50px 0;
             color: #FFFFFF;
             font-size: 36px;
+            margin-top: 50px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
         }
 
+        /* Timeline Container */
         .timeline-container {
             width: 100%;
             max-width: 1200px;
@@ -30,11 +42,11 @@
             padding: 50px 20px;
         }
 
+        /* Timeline Styling */
         .timeline {
             position: relative;
-            margin-left: 30px;
-            margin-top: 70px;
             padding-left: 50px;
+            margin-top: 50px;
         }
 
         .timeline::before {
@@ -43,20 +55,18 @@
             left: 20px;
             top: 0;
             bottom: 0;
-            width: 4px;
-            background-color: #006FB7; /* Blue Line */
+            width: 3px;
+            background-color: #7DA8FF; /* Light Blue */
         }
 
+        /* Timeline Events */
         .timeline-event {
             display: flex;
-            justify-content: flex-start;
             align-items: center;
-            position: relative;
-            margin: 30px 0;
-            padding-left: 70px;
+            margin: 60px 0;
             opacity: 0;
             transform: translateX(-100px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.8s ease, transform 0.8s ease;
         }
 
         .timeline-event.visible {
@@ -66,56 +76,69 @@
 
         .timeline-event .date {
             position: absolute;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
+            left: -25px;
             background-color: #E70010; /* Bold Red */
-            color: #FFFFFF;
-            padding: 15px 25px;
+            color: white;
+            padding: 20px;
             border-radius: 50%;
             font-weight: bold;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
+            font-size: 26px;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 5px 15px rgba(255, 0, 0, 0.4);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 2px solid #FFFFFF;
         }
 
         .timeline-event .date:hover {
-            transform: translateY(-50%) scale(1.1); /* Hover scale effect */
+            background-color: #B00308; /* Darker Red on hover */
+            transform: translateY(-5px);
         }
 
+        /* Event Content */
         .timeline-event .content {
             background-color: #0260A0; /* Tech Blue */
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            color: #FFFFFF;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 30px rgba(0, 100, 160, 0.4);
             width: 100%;
             margin-left: 20px;
+            position: relative;
+            z-index: 1;
+            border-left: 8px solid #7DA8FF; /* Light Blue Border */
+            transition: background-color 0.4s ease, transform 0.3s ease;
         }
 
         .timeline-event .content h3 {
-            color: #FFFFFF;
-            margin-top: 0;
-            font-size: 24px;
+            font-size: 28px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .timeline-event .content p {
-            color: #E70010; /* Accent Red */
             font-size: 18px;
+            line-height: 1.5;
         }
 
+        /* Hover Effects */
         .timeline-event:hover .content {
+            background-color: #006FB7; /* Royal Blue on hover */
+            box-shadow: 0px 20px 40px rgba(0, 111, 183, 0.4);
             transform: scale(1.05);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
-        /* Scroll Animation */
+        /* Scroll Animation (trigger on scroll) */
         .timeline-event:nth-child(odd) {
-            transition-delay: 0.3s;
+            transition-delay: 0.4s;
         }
 
         .timeline-event:nth-child(even) {
-            transition-delay: 0.4s;
+            transition-delay: 0.6s;
         }
 
         /* Mobile Responsiveness */
@@ -124,24 +147,26 @@
                 padding: 30px 20px;
             }
 
-            .timeline {
-                margin-left: 10px;
-            }
-
             .timeline-event .content {
                 padding: 15px;
             }
 
             .timeline-event .date {
-                left: 10px;
-                top: 20px;
+                font-size: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            h1 {
+                font-size: 28px;
             }
         }
+
     </style>
 </head>
 <body>
 
-    <h1>Tech Timeline 2025</h1>
+    <h1>Interactive Tech Timeline 2025</h1>
 
     <div class="timeline-container">
         <div class="timeline">
@@ -177,30 +202,24 @@
                 <div class="date">October</div>
                 <div class="content">
                     <h3>Announcement of Winners</h3>
-                    <p>Showcase of winners at Expo.</p>
-                </div>
-            </div>
-            <div class="timeline-event">
-                <div class="date">November</div>
-                <div class="content">
-                    <h3>Webinar</h3>
-                    <p>Showcase of winners and winning tools in technology and human rights communities.</p>
+                    <p>Showcase of the winners at the Expo.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Scroll animation to trigger timeline events
-        const timelineEvents = document.querySelectorAll('.timeline-event');
-
-        window.addEventListener('scroll', () => {
-            timelineEvents.forEach(event => {
-                if (event.getBoundingClientRect().top < window.innerHeight - 100) {
+        // Scroll-triggered animations
+        window.addEventListener('scroll', function() {
+            const events = document.querySelectorAll('.timeline-event');
+            events.forEach(event => {
+                const eventTop = event.getBoundingClientRect().top;
+                if (eventTop < window.innerHeight - 100) {
                     event.classList.add('visible');
                 }
             });
         });
     </script>
+
 </body>
 </html>
