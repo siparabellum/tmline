@@ -8,7 +8,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Avenir+Next:wght@200;300;400&display=swap');
 
-    /* General styles */
     body {
       margin: 0;
       padding: 0;
@@ -38,183 +37,186 @@
       text-shadow: 0px 0px 15px rgba(0, 160, 255, 0.6), 0px 0px 20px rgba(0, 160, 255, 0.8);
     }
 
+    /* Timeline Container */
     .timeline {
       width: 80%;
-      max-width: 900px;
+      max-width: 900px; /* Increase the width to provide space */
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
       position: relative;
-      display: grid;
-      grid-template-columns: 1fr 3px 1fr;
-      align-items: center;
+      padding-left: 40px; /* Add padding to avoid overlap */
     }
 
-    /* Neon glowing line in the middle */
+    /* Middle Curved Vertical Line */
     .timeline-middle {
-      background: linear-gradient(135deg, #7DA8FF, #0260A0, #E70010); /* Neon gradient */
-      width: 6px;
+      position: absolute;
+      top: 0;
+      left: 50%;
       height: 100%;
+      background: linear-gradient(135deg, #7DA8FF, #0260A0, #E70010); /* Neon blue, green, red gradient */
+      width: 6px;
       z-index: 1;
       border-radius: 50px;
-      box-shadow: 0px 0px 15px rgba(0, 160, 255, 0.8), 0px 0px 30px rgba(0, 160, 255, 0.8);
+      box-shadow: 0px 0px 10px rgba(0, 160, 255, 0.6), 0px 0px 30px rgba(0, 160, 255, 0.6);
     }
 
-    /* Timeline Event Styles */
     .timeline-events {
       list-style-type: none;
       padding: 0;
       margin: 0;
       display: flex;
       flex-direction: column;
-      position: relative;
-      z-index: 2;
     }
 
     .timeline-events li {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 10px 20px;
-      margin-bottom: 50px;
       position: relative;
+      padding-left: 40px;
+      margin-bottom: 50px;
       opacity: 0;
-      transform: translateY(100px);
+      transform: translateX(-100px);
       transition: opacity 1s ease, transform 1s ease;
     }
 
     .timeline-events li.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateX(0);
     }
 
-    /* Event titles */
     .timeline-events li h2 {
-      font-size: 1.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
       color: #B00308;
+      font-size: 1.6rem;
+      font-weight: bold;
       letter-spacing: 1px;
-      text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+      text-transform: uppercase;
+      text-shadow: 0px 0px 15px rgba(255, 0, 0, 0.6);
     }
 
     .timeline-events li h3 {
-      font-size: 1.2rem;
-      font-weight: 500;
       color: #0260A0;
-      text-shadow: 0 0 10px rgba(0, 160, 255, 0.6);
+      font-size: 1.25rem;
+      font-weight: 500;
+      text-shadow: 0px 0px 10px rgba(0, 160, 255, 0.6);
     }
 
     .timeline-events li h4 {
+      color: #FFFFFF;
       font-size: 1rem;
       font-weight: 300;
-      color: #FFFFFF;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+      text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6);
     }
 
-    /* Event Icon (add an icon image here if needed) */
-    .timeline-events li i {
-      font-size: 40px;
-      margin-bottom: 10px;
-      color: #E70010;
-      text-shadow: 0 0 10px rgba(231, 0, 16, 0.8);
-    }
-
-    /* Hover effect for each event */
+    /* Hover effect for the events */
     .timeline-events li:hover {
-      background-color: rgba(0, 0, 0, 0.2);
-      box-shadow: 0px 0px 20px rgba(231, 0, 16, 0.6);
-      transform: translateY(-5px);
+      background-color: rgba(200, 0, 0, 0.2);
+      color: #FFFFFF;
+      transform: translateX(10px);
+      box-shadow: 0 0 15px rgba(200, 0, 0, 0.6);
     }
 
-    /* Responsive styling */
+    .timeline-events li:hover h4 {
+      color: #E70010;
+    }
+
+    /* Timeline Content Style */
+    .timeline-content {
+      padding: 1.75rem;
+      background: #1f1f1f;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+      border-radius: 6px;
+      margin: 1rem 0;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(231, 0, 16, 0.3);
+      background: #2c2c2c;
+    }
+
+    /* Responsive Design */
     @media screen and (max-width: 768px) {
       .timeline {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 3px 1fr;
+        padding-left: 20px;
       }
 
       .timeline-middle {
         display: none;
       }
 
+      .timeline-content {
+        padding: 1rem;
+      }
+
       h1 {
         font-size: 2.5rem;
       }
     }
-
   </style>
-
 </head>
 <body>
 
   <div class="design-section">
     <h1>Hackathon Timeline</h1>
-
     <div class="timeline">
-      <!-- Timeline Middle Line -->
       <div class="timeline-middle"></div>
-
-      <!-- Timeline Events -->
-      <ul class="timeline-events">
+      
+      <div class="timeline-events">
         <!-- Event 1 - May -->
-        <li class="timeline-event-years-6-5">
-          <i class="event-icon">📅</i>
-          <h2>May</h2>
-          <h3>Launch of Hackathon Idea</h3>
-          <h4>In-person at Osaka and via media</h4>
+        <li class="timeline-event-years-6-5 timeline-event-legend">
+          <span>
+            <h2>May</h2>
+            <h3>Launch of Hackathon Idea</h3>
+            <h4>In-person at Osaka, via media</h4>
+          </span>
         </li>
 
         <!-- Event 2 - July -->
         <li class="timeline-event-years-2">
-          <i class="event-icon">🖥️</i>
           <h2>July</h2>
-          <h3>Online Workshop 1</h3>
-          <h4>Human Rights & the Sendai Framework</h4>
+          <h3>Online Workshop 1: What are Human Rights?</h3>
+          <h4>Related to Sendai Framework</h4>
         </li>
         <li class="timeline-event-years-2">
-          <i class="event-icon">🔍</i>
           <h2>July</h2>
-          <h3>Online Workshop 2</h3>
-          <h4>AI in Disaster Conditions (14 July Deadline)</h4>
+          <h3>Online Workshop 2: AI in Disaster Conditions</h3>
+          <h4>Registration Deadline (14 July 2025)</h4>
         </li>
 
         <!-- Event 3 - August -->
         <li class="timeline-event-years-3">
-          <i class="event-icon">☁️</i>
           <h2>August</h2>
-          <h3>Online Workshop 3</h3>
-          <h4>Tech Stacks & Open Source Platforms</h4>
+          <h3>Online Workshop 3: Tech Stacks & Platforms</h3>
+          <h4>Using data sets, cloud, and open source</h4>
         </li>
 
         <!-- Event 4 - September -->
         <li class="timeline-event-years-6">
-          <i class="event-icon">⚙️</i>
           <h2>September</h2>
-          <h3>3-day Hackathon</h3>
-          <h4>Japan’s Disaster Prevention Day, Showcase at World Expo</h4>
+          <h3>3-day Hackathon: Japan’s Disaster Prevention Day</h3>
+          <h4>Showcase at World Expo</h4>
         </li>
 
         <!-- Event 5 - October -->
         <li class="timeline-event-years-2">
-          <i class="event-icon">🏆</i>
           <h2>October</h2>
-          <h3>Announcement of Winner(s)</h3>
-          <h4>Showcase at Expo, International Day for Disaster Reduction (13 October)</h4>
+          <h3>Announcement of Winner(s) & Showcase</h3>
+          <h4>At Expo, International Day for Disaster Reduction (13 October)</h4>
         </li>
 
         <!-- Event 6 - November -->
         <li class="timeline-event-years-3">
-          <i class="event-icon">🌐</i>
           <h2>November</h2>
-          <h3>Webinar</h3>
-          <h4>Showcase of Winners</h4>
+          <h3>Webinar: Showcase of Winners</h3>
+          <h4>Winning tools in technology and human rights communities</h4>
         </li>
-      </ul>
+      </div>
     </div>
   </div>
 
   <script>
-    // Add visible class to each event on scroll
+    // Add 'visible' class to each event on scroll
     const events = document.querySelectorAll('.timeline-events li');
     window.addEventListener('scroll', () => {
       events.forEach(event => {
@@ -228,3 +230,4 @@
 
 </body>
 </html>
+
