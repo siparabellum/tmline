@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Hackathon Timeline</title>
+  
+  <!-- Embedded CSS -->
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #0ff;
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .title {
+      text-align: center;
+      padding: 30px 0;
+      font-size: 2em;
+      color: #0ff;
+      text-shadow: 0 0 10px #0ff;
+    }
+
+    .timeline-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .timeline {
+      position: relative;
+      border-left: 2px solid #0ff;
+      padding-left: 40px;
+    }
+
+    .timeline-month {
+      position: relative;
+      margin-bottom: 50px;
+    }
+
+    .glow-dot {
+      position: absolute;
+      left: -12px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      background: #0ff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    .timeline-content {
+      background: rgba(0, 255, 255, 0.05);
+      border: 1px solid #0ff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: inset 0 0 10px #0ff;
+      transition: 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      background: rgba(0, 255, 255, 0.1);
+      transform: scale(1.02);
+    }
+
+    .timeline-content h2 {
+      margin-top: 0;
+      font-size: 1.5em;
+      text-shadow: 0 0 5px #0ff;
+    }
+
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .timeline-container {
+        padding: 10px;
+      }
+
+      .timeline {
+        border-left: none;
+        padding-left: 20px;
+      }
+
+      .timeline-content {
+        padding: 15px;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="timeline-container">
+    <h1 class="title">Hackathon Timeline 2025</h1>
+
+    <div class="timeline">
+      <div class="timeline-month" data-month="May">
+        <div class="glow-dot"></div>
+        <div class="timeline-content">
+          <h2>May</h2>
+          <p>📢 Announcement and launch of Hackathon idea – in person at Osaka and via media, networks</p>
+        </div>
+      </div>
+
+      <div class="timeline-month" data-month="July">
+        <div class="glow-dot"></div>
+        <div class="timeline-content">
+          <h2>July</h2>
+          <p>💡 Online Workshop 1: What are Human Rights and how do they relate to the Sendai Framework</p>
+          <p>🔍 Online Workshop 2: Use cases and best practices of AI in disaster conditions</p>
+          <p>📅 Registration deadline: <strong>14 July 2025</strong></p>
+        </div>
+      </div>
+
+      <div class="timeline-month" data-month="August">
+        <div class="glow-dot"></div>
+        <div class="timeline-content">
+          <h2>August</h2>
+          <p>🛠️ Online Workshop 3: Tech stacks, datasets, the cloud, and open source</p>
+        </div>
+      </div>
+
+      <div class="timeline-month" data-month="September">
+        <div class="glow-dot"></div>
+        <div class="timeline-content">
+          <h2>September</h2>
+          <p>🚨 3-day Hackathon starts on <strong>1 September (Japan’s Disaster Prevention Day)</strong></p>
+          <p>🎉 Concludes with a showcase at the World Expo</p>
+        </div>
+      </div>
+
+      <div class="timeline-month" data-month="October">
+        <div class="glow-dot"></div>
+        <div class="timeline-content">
+          <h2>October</h2>
+          <p>🏆 Announcement of winner(s) and showcase at Expo</p>
+          <p>🌐 13 October: International Day for Disaster Reduction</p>
+        </div>
+      </div>
+
+      <div class="timeline-month" data-month="November">
+        <div class="glow-dot"></div>
+        <div class="timeline-content">
+          <h2>November</h2>
+          <p>🎓 Webinar: Showcase of winners and tools in tech and human rights communities</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
